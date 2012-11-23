@@ -4409,10 +4409,6 @@
     <string name="system_settings_title">System Tweaks</string>
     <string name="system_interface_title">System Tweaks</string>
 
-    <!-- Sound settings screen, volumes -->
-    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
-    <string name="link_volume_mutes">Silent mode affects notifications</string>
-
     <!-- Sound settings screen -->
     <string name="volume_overlay_title">Volume panel style</string>
     <string name="volume_ring_only_description">Ringtone</string>
@@ -4520,6 +4516,7 @@
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">The Unofficial build date</string>
     <string name="build_date_default">2012-01-01-0000</string>
+
 	 <!-- Quiet hours #CM -->
     <string name="quiet_hours_title">Quiet hours</string>
     <string name="quiet_hours_summary">Configure the hours the device should be quiet</string>
@@ -4541,4 +4538,9 @@
 
 	 <!-- Theme chooser -->
     <string name="themes_title">Themes</string>
-</resources>
+
+    <!-- Sound settings screen, volumes -->
+    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
+    <string name="link_volume_mutes">Silent mode affects notifications</string>
+    
+ </resources>

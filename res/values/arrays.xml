@@ -772,6 +772,7 @@
         <!-- Always allow app to send to premium SMS short code. -->
         <item>Always allow</item>
     </string-array>
+
     <!-- Status bar AM PM -->
     <string-array name="entries_status_bar_am_pm">
         <item>Normal</item>
@@ -795,6 +796,25 @@
     </string-array>
 
     <string-array name="values_status_bar_battery" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- BUILD TWEAKS -->
+
+    <!-- Volume Overlay options. -->
+    <string-array name="volume_overlay_entries">
+        <item>Single</item>
+        <item>Expandable</item>
+        <item>Expanded</item>
+        <item>None</item>
+    </string-array>
+
+    <!-- Values for Volume Overlay. Do not translate. -->
+    <string-array name="volume_overlay_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
