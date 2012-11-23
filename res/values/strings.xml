@@ -4429,3 +4429,24 @@
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
 
 </resources>
+=======
+
+    <!-- About phone screen, build date of ROM -->
+    <string name="build_date">rasbeanjelly build date</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+
+    <!-- Sound settings screen, volumes -->
+    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
+    <string name="link_volume_mutes">Silent mode affects notifications</string>
+
+    <!-- Sound settings screen -->
+    <string name="volume_overlay_title">Volume panel style</string>
+    <string name="volume_ring_only_description">Ringtone</string>
+    <string name="volbtn_music_controls_title">Volume rocker music controls</string>
+    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
+
+    <!-- Wakeup options -->
+    <string name="pref_volume_wake_title">Volume rocker wake</string>
+    <string name="pref_volume_wake_summary">Press the volume rocker to wake device</string>
+    
+ </resources>
