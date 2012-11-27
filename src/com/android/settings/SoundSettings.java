@@ -131,15 +131,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         }
     };
 
-	private BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(AudioManager.RINGER_MODE_CHANGED_ACTION)) {
-                updateState(false);
-            }
-        }
-    };
-
+	
     private PreferenceGroup mSoundSettings;
 
     @Override
@@ -268,8 +260,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         IntentFilter filter = new IntentFilter(Intent.ACTION_DOCK_EVENT);
         getActivity().registerReceiver(mReceiver, filter);
 
-		IntentFilter filter = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);
-        getActivity().registerReceiver(mReceiver, filter);
     }
 
     @Override
@@ -371,12 +361,16 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent
             return false;
+<<<<<<< HEAD
             } else if (preference == mVolBtnMusicCtrl) {
                 Settings.System.putInt(getContentResolver(), Settings.System.VOLBTN_MUSIC_CONTROLS,
                         mVolBtnMusicCtrl.isChecked() ? 1 : 0);
 		} else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
+=======
+
+>>>>>>> ca3490d... Fix maybe
         } else if (preference == mDockAudioSettings) {
             int dockState = mDockIntent != null
                     ? mDockIntent.getIntExtra(Intent.EXTRA_DOCK_STATE, 0)
@@ -407,6 +401,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDockAudioMediaEnabled) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.DOCK_AUDIO_MEDIA_ENABLED,
                     mDockAudioMediaEnabled.isChecked() ? 1 : 0);
+				} else {
+            // If we didn't handle it, let preferences handle it.
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
         return true;
     }
