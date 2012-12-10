@@ -57,6 +57,17 @@
         android:breadCrumbTitle="@string/wireless_networks_settings_title"
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
+    <!-- AOSPxXx -->
+    <header android:title="@string/abso_title" />
+    <header android:icon="@drawable/abso_tools2" android:title="@string/absoota_title">
+        <intent android:targetPackage="com.flappjaxxx.fjtools" android:action="android.intent.action.MAIN" android:targetClass="com.flappjaxxx.fjtools.OTAActivity" />
+    </header>
+    <header android:icon="@drawable/abso_tools_tools" android:title="@string/absotools_title">
+        <intent android:targetPackage="com.flappjaxxx.fjtools" android:action="android.intent.action.MAIN" android:targetClass="com.flappjaxxx.fjtools.ToolsActivity" />
+    </header>
+    <header android:icon="@drawable/ic_settings_launcher" android:title="@string/launcher_settings">
+        <intent android:targetPackage="com.cyanogenmod.trebuchet" android:action="android.intent.action.MAIN" android:targetClass="com.cyanogenmod.trebuchet.preference.Preferences" />
+    </header>
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"

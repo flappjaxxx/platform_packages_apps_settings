@@ -1750,7 +1750,7 @@
 
     <!-- Display settings --><skip/>
     <!-- Sound & display settings screen, section header for settings related to display -->
-    <string name="display_settings">Display</string>
+    <string name="display_settings">Display and Tweaks</string>
     <!-- Sound & display settings screen, accelerometer-based rotation check box label -->
     <string name="accelerometer_title">Auto-rotate screen</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is selected -->
@@ -4395,4 +4395,33 @@
     <string name="cell_broadcast_settings">Cell broadcasts</string>
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
+    <!-- Status bar  -->
+    <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_clock_title">Clock</string>
+    <string name="status_bar_general_title">General</string>
+    <string name="status_bar_show_clock_title">Show clock</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_battery_title">Battery status style</string>
+    <string name="status_bar_style_icon">Icon</string>
+    <string name="status_bar_style_hidden">Hidden</string>
+    <string name="status_bar_battery_status_percentage">Percentage</string>
+    <string name="status_bar_battery_status_circle">Circle</string>
+    <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
+    <string name="abso_title">The Unofficial</string>
+    <string name="absotools_title">Tools</string>
+    <string name="absoota_title">OTA</string>
+    <string name="launcher_settings">Launcher</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="quicksettings_settings">Quick Settings</string><!-- Navigation Bar  -->
+    <string name="navigation_bar_title">NavBar</string>
+
+    <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
+    <string name="navigation_bar_tips_title">Quick tips</string>
+    <string name="navigation_bar_reset_message">Delete current settings and restore to default?</string>
+    <string name="navigation_bar_save_message">Navigation bar settings saved</string>
+    <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
+    <string name="navigation_bar_menu_editable">Editable</string>
+    <string name="navigation_bar_menu_locked">Locked</string>
 </resources>
