@@ -68,6 +68,11 @@
     <header android:icon="@drawable/ic_settings_launcher" android:title="@string/launcher_settings">
         <intent android:targetPackage="com.cyanogenmod.trebuchet" android:action="android.intent.action.MAIN" android:targetClass="com.cyanogenmod.trebuchet.preference.Preferences" />
     </header>
+    <header
+        android:id="@+id/system_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.fj.SystemSettings"
+        android:title="@string/system_settings_title" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
