@@ -1469,6 +1469,7 @@
 
         <activity android:name=".fj.SystemSettings" />
         <activity android:name=".fj.LockscreenTargets" />
+        <activity android:name=".fj.NavBar" />
 
         <!-- BUILD TWEAKS END -->
 
