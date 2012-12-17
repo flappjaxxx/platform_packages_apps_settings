@@ -361,16 +361,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent
             return false;
-<<<<<<< HEAD
             } else if (preference == mVolBtnMusicCtrl) {
                 Settings.System.putInt(getContentResolver(), Settings.System.VOLBTN_MUSIC_CONTROLS,
                         mVolBtnMusicCtrl.isChecked() ? 1 : 0);
-		} else {
-            // If we didn't handle it, let preferences handle it.
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
-=======
 
->>>>>>> ca3490d... Fix maybe
         } else if (preference == mDockAudioSettings) {
             int dockState = mDockIntent != null
                     ? mDockIntent.getIntExtra(Intent.EXTRA_DOCK_STATE, 0)
