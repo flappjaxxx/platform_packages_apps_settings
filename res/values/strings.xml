@@ -4453,6 +4453,7 @@
     <string name="launcher_settings">Launcher</string>
     <string name="changelog_title">Changelog</string>
     <string name="quicksettings_settings">Quick Settings</string>
+    <string name="quicksettings_title">Quick Settings</string>
  
     <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Kill app back button</string>
