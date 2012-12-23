@@ -4430,7 +4430,6 @@
     <string name="volume_key_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
-<<<<<<< HEAD
 
     <!-- Sound settings screen, setting check box label -->
     <string name="volume_adjust_sounds_enable_title">Volume adjust sound</string>
