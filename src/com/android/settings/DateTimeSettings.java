@@ -17,7 +17,6 @@
 package com.android.settings;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -185,18 +184,18 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
+        setDate(year, month, day);
         final Activity activity = getActivity();
         if (activity != null) {
-            setDate(activity, year, month, day);
             updateTimeAndDateDisplay(activity);
         }
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        setTime(hourOfDay, minute);
         final Activity activity = getActivity();
         if (activity != null) {
-            setTime(activity, hourOfDay, minute);
             updateTimeAndDateDisplay(activity);
         }
 
@@ -338,7 +337,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         }
     }
 
-    /* package */ static void setDate(Context context, int year, int month, int day) {
+    /* package */ static void setDate(int year, int month, int day) {
         Calendar c = Calendar.getInstance();
 
         c.set(Calendar.YEAR, year);
@@ -347,11 +346,11 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         long when = c.getTimeInMillis();
 
         if (when / 1000 < Integer.MAX_VALUE) {
-            ((AlarmManager) context.getSystemService(Context.ALARM_SERVICE)).setTime(when);
+            SystemClock.setCurrentTimeMillis(when);
         }
     }
 
-    /* package */ static void setTime(Context context, int hourOfDay, int minute) {
+    /* package */ static void setTime(int hourOfDay, int minute) {
         Calendar c = Calendar.getInstance();
 
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -361,7 +360,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         long when = c.getTimeInMillis();
 
         if (when / 1000 < Integer.MAX_VALUE) {
-            ((AlarmManager) context.getSystemService(Context.ALARM_SERVICE)).setTime(when);
+            SystemClock.setCurrentTimeMillis(when);
         }
     }
 

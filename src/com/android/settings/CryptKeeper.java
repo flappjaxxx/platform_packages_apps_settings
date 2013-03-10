@@ -55,7 +55,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -230,16 +229,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     };
 
     private AudioManager mAudioManager;
-    /** The status bar where back/home/recent buttons are shown. */
-    private StatusBarManager mStatusBar;
-
-    /** All the widgets to disable in the status bar */
-    final private static int sWidgetsToDisable = StatusBarManager.DISABLE_EXPAND
-            | StatusBarManager.DISABLE_NOTIFICATION_ICONS
-            | StatusBarManager.DISABLE_NOTIFICATION_ALERTS
-            | StatusBarManager.DISABLE_SYSTEM_INFO
-            | StatusBarManager.DISABLE_HOME
-            | StatusBarManager.DISABLE_RECENT;
 
     /** @return whether or not this Activity was started for debugging the UI only. */
     private boolean isDebugView() {
@@ -280,7 +269,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
      */
     @Override
     public void onBackPressed() {
-        // In the rare case that something pressed back even though we were disabled.
         if (mIgnoreBack)
             return;
         super.onBackPressed();
@@ -311,8 +299,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
 
         // Disable the status bar, but do NOT disable back because the user needs a way to go
         // from keyboard settings and back to the password screen.
-        mStatusBar = (StatusBarManager) getSystemService(Context.STATUS_BAR_SERVICE);
-        mStatusBar.disable(sWidgetsToDisable);
+        StatusBarManager sbm = (StatusBarManager) getSystemService(Context.STATUS_BAR_SERVICE);
+        sbm.disable(StatusBarManager.DISABLE_EXPAND
+                | StatusBarManager.DISABLE_NOTIFICATION_ICONS
+                | StatusBarManager.DISABLE_NOTIFICATION_ALERTS
+                | StatusBarManager.DISABLE_SYSTEM_INFO
+                | StatusBarManager.DISABLE_HOME
+                | StatusBarManager.DISABLE_RECENT);
 
         setAirplaneModeIfNecessary();
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -410,7 +403,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
 
         ((ProgressBar) findViewById(R.id.progress_bar)).setIndeterminate(true);
         // Ignore all back presses from now, both hard and soft keys.
-        setBackFunctionality(false);
+        mIgnoreBack = true;
         // Start the first run of progress manually. This method sets up messages to occur at
         // repeated intervals.
         updateProgress();
@@ -476,7 +469,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         if (mCooldown <= 0) {
             // Re-enable the password entry and back presses.
             mPasswordEntry.setEnabled(true);
-            setBackFunctionality(true);
+            mIgnoreBack = false;
             status.setText(R.string.enter_password);
         } else {
             CharSequence template = getText(R.string.crypt_keeper_cooldown);
@@ -485,19 +478,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mCooldown--;
             mHandler.removeMessages(MESSAGE_COOLDOWN);
             mHandler.sendEmptyMessageDelayed(MESSAGE_COOLDOWN, 1000); // Tick every second
-        }
-    }
-
-    /**
-     * Sets the back status: enabled or disabled according to the parameter.
-     * @param isEnabled true if back is enabled, false otherwise.
-     */
-    private final void setBackFunctionality(boolean isEnabled) {
-        mIgnoreBack = !isEnabled;
-        if (isEnabled) {
-            mStatusBar.disable(sWidgetsToDisable);
-        } else {
-            mStatusBar.disable(sWidgetsToDisable | StatusBarManager.DISABLE_BACK);
         }
     }
 
@@ -630,7 +610,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             // Disable the password entry and back keypress while checking the password. These
             // we either be re-enabled if the password was wrong or after the cooldown period.
             mPasswordEntry.setEnabled(false);
-            setBackFunctionality(false);
+            mIgnoreBack = true;
 
             Log.d(TAG, "Attempting to send command to decrypt");
             new DecryptTask().execute(password);

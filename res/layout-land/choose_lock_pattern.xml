@@ -47,7 +47,7 @@
                 style="@style/SecurityPreferenceButtonContainer"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <!-- left / top button: skip, or re-try -->
                 <Button android:id="@+id/footerLeftButton"

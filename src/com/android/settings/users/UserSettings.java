@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.UserInfo;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -478,7 +477,6 @@ public class UserSettings extends SettingsPreferenceFragment
     }
 
     private void loadIconsAsync(List<Integer> missingIcons) {
-        final Resources resources = getResources();
         new AsyncTask<List<Integer>, Void, Void>() {
             @Override
             protected void onPostExecute(Void result) {
@@ -487,16 +485,17 @@ public class UserSettings extends SettingsPreferenceFragment
 
             @Override
             protected Void doInBackground(List<Integer>... values) {
+                if (getActivity() == null) return null;
                 for (int userId : values[0]) {
                     Bitmap bitmap = mUserManager.getUserIcon(userId);
-                    Drawable d = new BitmapDrawable(resources, bitmap);
+                    Drawable d = new BitmapDrawable(getResources(), bitmap);
                     mUserIcons.append(userId, d);
                 }
                 return null;
             }
         }.execute(missingIcons);
-    }
 
+    }
     private void assignProfilePhoto(final UserInfo user) {
         if (!Utils.copyMeProfilePhoto(getActivity(), user)) {
             assignDefaultPhoto(user);

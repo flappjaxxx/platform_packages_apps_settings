@@ -84,9 +84,13 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mHelpUrl != null && getActivity() != null) {
+        if (mHelpUrl != null) {
+            Intent helpIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mHelpUrl));
+            helpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             MenuItem helpItem = menu.add(0, MENU_HELP, 0, R.string.help_label);
-            HelpUtils.prepareHelpMenuItem(getActivity(), helpItem, mHelpUrl);
+            helpItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            helpItem.setIntent(helpIntent);
         }
     }
 

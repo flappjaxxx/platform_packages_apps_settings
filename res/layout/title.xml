@@ -19,45 +19,46 @@
 
 <!-- The title area at the top of the settings pane -->
 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title_area"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@*android:dimen/preference_fragment_padding_side"
-    android:layout_marginEnd="@*android:dimen/preference_fragment_padding_side"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingTop="8dip"
-    android:paddingBottom="8dip"
-    android:columnCount="2">
+    android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/provider_icon"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:layout_rowSpan="2"
-        android:layout_marginEnd="8dip"
-        android:scaleType="centerInside"
+    <ImageView android:id="@+id/provider_icon"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:layout_margin="5dip"
+        android:layout_gravity="center_vertical"
         android:contentDescription="@null" />
 
-    <TextView
-        android:id="@+id/user_id"
+    <LinearLayout
         android:layout_width="0dip"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginTop="2dip"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textAlignment="viewStart" />
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/provider_id"
-        android:layout_width="0dip"
-        android:layout_gravity="fill_horizontal"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textAlignment="viewStart" />
+        <TextView
+            android:id="@+id/user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:attr/textColorTertiary"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dip"/>
 
-</GridLayout>
+        <TextView
+            android:id="@+id/provider_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorTertiary"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dip"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -312,7 +312,7 @@ public class Utils {
         }
 
         // Did not find a matching activity, so remove the preference
-        target.remove(header);
+        if (target.remove(header)) System.err.println("Removed " + header.id);
 
         return false;
     }
@@ -436,20 +436,13 @@ public class Utils {
         return statusString;
     }
 
-    public static void forcePrepareCustomPreferencesList(
-            ViewGroup parent, View child, ListView list, boolean ignoreSidePadding) {
-        list.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
-        list.setClipToPadding(false);
-        prepareCustomPreferencesList(parent, child, list, ignoreSidePadding);
-    }
-
     /**
      * Prepare a custom preferences layout, moving padding to {@link ListView}
      * when outside scrollbars are requested. Usually used to display
      * {@link ListView} and {@link TabWidget} with correct padding.
      */
     public static void prepareCustomPreferencesList(
-            ViewGroup parent, View child, View list, boolean ignoreSidePadding) {
+            ViewGroup parent, View child, ListView list, boolean ignoreSidePadding) {
         final boolean movePadding = list.getScrollBarStyle() == View.SCROLLBARS_OUTSIDE_OVERLAY;
         if (movePadding && parent instanceof PreferenceFrameLayout) {
             ((PreferenceFrameLayout.LayoutParams) child.getLayoutParams()).removeBorders = true;

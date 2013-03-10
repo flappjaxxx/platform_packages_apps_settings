@@ -16,8 +16,6 @@
 
 package com.android.settings.fuelgauge;
 
-import static com.android.settings.Utils.prepareCustomPreferencesList;
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ApplicationErrorReport;
@@ -36,10 +34,10 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Process;
+import android.os.UserHandle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -143,12 +141,8 @@ public class PowerUsageDetail extends Fragment implements Button.OnClickListener
     }
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.power_usage_details, container, false);
-        prepareCustomPreferencesList(container, view, view, false);
-
-        mRootView = view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = mRootView = inflater.inflate(R.layout.power_usage_details, null);
         createDetails();
         return view;
     }
@@ -316,12 +310,10 @@ public class PowerUsageDetail extends Fragment implements Button.OnClickListener
                 switch (mTypes[i]) {
                     case R.string.usage_type_data_recv:
                     case R.string.usage_type_data_send:
-                        final long bytes = (long) (mValues[i]);
-                        value = Formatter.formatFileSize(getActivity(), bytes);
+                        value = Utils.formatBytes(getActivity(), mValues[i]);
                         break;
                     case R.string.usage_type_no_coverage:
-                        final int percentage = (int) Math.floor(mValues[i]);
-                        value = getActivity().getString(R.string.percentage, percentage);
+                        value = String.format("%d%%", (int) Math.floor(mValues[i]));
                         break;
                     case R.string.usage_type_gps:
                         mUsesGps = true;

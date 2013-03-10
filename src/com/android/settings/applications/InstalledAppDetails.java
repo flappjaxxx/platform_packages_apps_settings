@@ -424,12 +424,9 @@ public class InstalledAppDetails extends Fragment
     }
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.installed_app_details, container, false);
-        Utils.prepareCustomPreferencesList(container, view, view, false);
-
-        mRootView = view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = mRootView = inflater.inflate(R.layout.installed_app_details, null);
+        
         mComputingStr = getActivity().getText(R.string.computing_size);
         
         // Set default values on sizes
@@ -539,9 +536,7 @@ public class InstalledAppDetails extends Fragment
 
     // Utility method to set applicaiton label and icon.
     private void setAppLabelAndIcon(PackageInfo pkgInfo) {
-        final View appSnippet = mRootView.findViewById(R.id.app_snippet);
-        appSnippet.setPadding(0, appSnippet.getPaddingTop(), 0, appSnippet.getPaddingBottom());
-
+        View appSnippet = mRootView.findViewById(R.id.app_snippet);
         ImageView icon = (ImageView) appSnippet.findViewById(R.id.app_icon);
         mState.ensureIcon(mAppEntry);
         icon.setImageDrawable(mAppEntry.icon);
