@@ -58,6 +58,15 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
+    <!-- FJMod -->
+    <header android:title="@string/abso_title" />
+    <header android:icon="@drawable/abso_tools2" android:title="@string/absoota_title">
+        <intent android:targetPackage="com.flappjaxxx.fjtools" android:action="android.intent.action.MAIN" android:targetClass="com.flappjaxxx.fjtools.OTAActivity" />
+    </header>
+    <header android:icon="@drawable/abso_tools_tools" android:title="@string/absotools_title">
+        <intent android:targetPackage="com.flappjaxxx.fjtools" android:action="android.intent.action.MAIN" android:targetClass="com.flappjaxxx.fjtools.ToolsActivity" />
+    </header>
+
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />

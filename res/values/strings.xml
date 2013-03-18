@@ -4727,6 +4727,11 @@
     <string name="quiet_hours_active_from">Active from</string>
     <string name="quiet_hours_active_to">to</string>
 
+    <!-- FJMod -->
+    <string name="abso_title">FJ-Mod</string>
+    <string name="absotools_title">Tools</string>
+    <string name="absoota_title">OTA</string>
+
     <!-- Time range preference -->
     <string name="start_time_title">Start</string>
     <string name="end_time_title">End</string>
