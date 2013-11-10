@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- About phone screen, build date of ROM -->
-    <string name="build_date">rastakat build date</string>
+    <string name="build_date">Build date</string>
     <string name="build_date_default">2012-01-01-0000</string>
     
     <!-- Volume Adjust sound -->
@@ -24,7 +24,7 @@
     <!-- BUILD TWEAKS  -->
     <!-- rastakat Settings  -->
     <!-- Settings main menu category heading -->
-    <string name="header_category_interface">RASTAKAT</string>
+    <string name="header_category_interface">Advanced</string>
     <!-- System Interface settings  -->
     <string name="system_settings_title">Build Tweaks</string>
     <string name="system_interface_title">Build Tweaks</string>
